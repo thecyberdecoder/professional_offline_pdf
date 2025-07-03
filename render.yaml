@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: pdf-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node server.js
+    rootDir: server
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3001 # Or any port your backend listens on
+
+  - type: static
+    name: pdf-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    publishPath: client/dist
+    rootDir: client
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://pdf-backend.onrender.com # Replace with your backend service URL on Render

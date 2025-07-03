@@ -1,0 +1,531 @@
+html, body, #root {
+  height: 100%;
+  width: 100%; /* Ensure full width */
+  margin: 0;
+}
+
+body {
+  background-color: #f8f9fa;
+  transition: background-color 0.3s ease;
+}
+
+.card {
+  transition: transform .2s, box-shadow 0.3s ease;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.dropzone.active {
+  border-color: #007bff;
+}
+
+.dark-mode {
+  background-color: #212529;
+  color: #f8f9fa;
+}
+
+.dark-mode .card {
+  background-color: #343a40;
+  color: #f8f9fa;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25) !important;
+}
+
+.dark-mode .navbar {
+  background-color: #343a40 !important;
+  border-bottom: 1px solid #495057;
+}
+
+.dark-mode .navbar-brand, .dark-mode .nav-link {
+  color: #f8f9fa !important;
+}
+
+.dark-mode .navbar-brand:hover, .dark-mode .nav-link:hover {
+  color: #adb5bd !important;
+}
+
+.dark-mode .btn-outline-secondary {
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+.dark-mode .btn-outline-secondary:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.dark-mode .form-control {
+  background-color: #495057;
+  color: #f8f9fa;
+  border-color: #6c757d;
+}
+
+.dark-mode .form-control::placeholder {
+  color: #adb5bd;
+}
+
+.dark-mode .form-control:focus {
+  background-color: #495057;
+  color: #f8f9fa;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.dark-mode .table {
+  color: #f8f9fa;
+}
+
+.dark-mode .table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-mode .table-bordered {
+  border-color: #495057;
+}
+
+.dark-mode .table-bordered > :not(caption) > * > * {
+  border-color: #495057;
+}
+
+.dark-mode .alert-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+}
+
+.dark-mode .alert-success {
+  background-color: #28a745;
+  color: #fff;
+  border-color: #28a745;
+}
+
+/* Custom styles for hover effect on nav links */
+.navbar .nav-link {
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+}
+
+.navbar .nav-link:hover {
+  background-color: rgba(0, 123, 255, 0.1); /* Light blue background on hover */
+  color: #007bff; /* Blue text on hover */
+}
+
+.dark-mode .navbar .nav-link:hover {
+  background-color: rgba(13, 110, 253, 0.2); /* Darker blue background on hover for dark mode */
+  color: #6daffc !important; /* Lighter blue text on hover for dark mode */
+}
+
+/* Style for the main app title */
+.app-title {
+  text-align: center;
+  font-size: 2rem; /* Base font size */
+  font-weight: bold;
+  padding: 1rem 0;
+  color: #343a40; /* Dark text for light mode */
+}
+
+.dark-mode .app-title {
+  color: #f8f9fa; /* Light text for dark mode */
+}
+
+@media (min-width: 768px) {
+  .app-title {
+    font-size: 4rem; /* 4 times the base font size for larger screens */
+  }
+}
+
+/* New styles for Compress component UI improvements */
+.compress-container {
+  position: relative;
+}
+
+.dropzone {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px dashed #007bff;
+  border-radius: 8px;
+  background-color: #f0f8ff;
+  color: #007bff;
+  font-size: 1.1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropzone.active {
+  background-color: #e0f2ff;
+  border-color: #0056b3;
+  transform: scale(1.02);
+}
+
+.dropzone.file-selected {
+  border-color: #28a745;
+  background-color: #e6ffe6;
+  color: #28a745;
+}
+
+.file-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border-radius: 8px;
+}
+
+.dark-mode .loading-overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.loading-overlay .spinner-border {
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 15px;
+}
+
+.loading-overlay p {
+  color: #007bff;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.dark-mode .loading-overlay p {
+  color: #6daffc;
+}
+
+.compression-results {
+  border-left: 5px solid #28a745;
+}
+
+.dark-mode .compression-results {
+  border-left-color: #28a745;
+}
+
+.compression-results h4 {
+  color: #28a745;
+  margin-bottom: 15px;
+}
+
+.dark-mode .compression-results h4 {
+  color: #28a745;
+}
+
+.compression-results p {
+  margin-bottom: 5px;
+}
+
+/* Styles for Split component */
+.split-container {
+  position: relative;
+}
+
+.page-thumbnails-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.page-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.page-thumbnail {
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 120px; /* Fixed width for thumbnails */
+  height: 160px; /* Fixed height for thumbnails */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden; /* Hide overflow for images */
+}
+
+.page-thumbnail:hover {
+  border-color: #007bff;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.page-thumbnail.selected {
+  border-color: #28a745;
+  background-color: #e6ffe6;
+  box-shadow: 0 4px 8px rgba(40, 167, 69, 0.2);
+}
+
+.page-thumbnail img {
+  max-width: 100px;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.page-thumbnail p {
+  margin-top: 8px;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #333;
+}
+
+.dark-mode .page-thumbnail p {
+  color: #f8f9fa;
+}
+
+.no-preview {
+  width: 100px;
+  height: 120px;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: #666;
+  border-radius: 4px;
+}
+
+.dark-mode .no-preview {
+  background-color: #495057;
+  color: #adb5bd;
+}
+
+/* Styles for Merge component */
+.merge-container {
+  position: relative;
+}
+
+.files-preview-container {
+  margin-top: 20px;
+}
+
+.files-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  min-height: 100px;
+  align-items: flex-start;
+}
+
+.file-item {
+  position: relative;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+  width: 120px; /* Fixed width for file items */
+  height: 160px; /* Fixed height for file items */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.file-item img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: contain;
+  border-radius: 4px;
+  margin-bottom: 5px;
+}
+
+.file-item p {
+  font-size: 0.8em;
+  word-break: break-all;
+  margin-bottom: 0;
+}
+
+.remove-file-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  color: #dc3545;
+  font-size: 1.2em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.remove-file-btn:hover {
+  color: #c82333;
+}
+
+.file-item-actions {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.dark-mode .files-preview {
+  border-color: #495057;
+}
+
+.dark-mode .file-item {
+  background-color: #343a40;
+  color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .file-item p {
+  color: #f8f9fa;
+}
+
+/* Styles for Lock component */
+.lock-container {
+  position: relative;
+}
+
+/* Styles for Unlock component */
+.unlock-container {
+  position: relative;
+}
+
+/* Styles for AddWatermark component */
+.add-watermark-container {
+  position: relative;
+}
+
+/* Login Page Enhancements */
+.login-container {
+  background: linear-gradient(45deg, #f0f2f5, #e0e5ec); /* Subtle gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure it takes full viewport height */
+}
+
+.dark-mode .login-container {
+  background: linear-gradient(45deg, #2c3e50, #1a252f); /* Dark gradient background */
+}
+
+.login-card {
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; /* White background for card */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.dark-mode .login-card {
+  background-color: #34495e; /* Darker background for card in dark mode */
+  color: #ecf0f1;
+}
+
+.login-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dark-mode .login-title {
+  color: #ecf0f1;
+}
+
+.powered-by-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.dark-mode .powered-by-text {
+  color: #bdc3c7;
+}
+
+.indian-flag-icon {
+  width: 80px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.captcha-display {
+  background-color: #e9ecef; /* Light gray background */
+  color: #28a745; /* Green text color */
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 2px;
+}
+
+.dark-mode .captcha-display {
+  background-color: #495057; /* Darker gray background in dark mode */
+  color: #28a745; /* Still green in dark mode */
+}
+
+.login-button {
+  background-color: #007bff;
+  border-color: #007bff;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.theme-toggle-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  color: #333; /* Default icon color */
+}
+
+.dark-mode .theme-toggle-icon {
+  color: #f8f9fa; /* Icon color in dark mode */
+}
+
+.navbar-brand-custom {
+  font-size: 2.0rem; /* Increased font size */
+  font-weight: bold; /* Make it bold */
+  width: 100%; /* Take full width to allow centering */
+  text-align: center; /* Center align the text */
+}
+
+.theme-toggle-button {
+  font-size: 0.7rem; /* Further reduced font size */
+  padding: 0.15rem 0.3rem; /* Further reduced padding */
+}
